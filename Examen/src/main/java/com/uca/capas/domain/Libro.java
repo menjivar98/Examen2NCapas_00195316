@@ -48,9 +48,9 @@ public class Libro {
 	@Transient
 	private Integer c_categoria;
 	
-	@Temporal(TemporalType.DATE)
+	
 	@Column(name = "f_ingreso")
-	@DateTimeFormat(pattern = "dd/mm/yyyy hh:mm")
+	@DateTimeFormat(pattern = "hh: mm: ss a dd-MMM-yyyy")
 	private Date f_ingreso;
 	
 	@NotNull
