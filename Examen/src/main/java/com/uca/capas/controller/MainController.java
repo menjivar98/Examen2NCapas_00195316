@@ -1,5 +1,7 @@
 package com.uca.capas.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uca.capas.domain.Categoria;
+import com.uca.capas.domain.Libro;
 import com.uca.capas.service.CategoriaService;
 import com.uca.capas.service.LibroService;
 
@@ -66,6 +69,28 @@ public class MainController {
 		
 		
 		return mav;
+	}
+	
+	@RequestMapping("/indexLibro")
+	public ModelAndView indexLibro() {
+		ModelAndView mav = new ModelAndView();
+		
+		Libro libro = new Libro();
+		List <Categoria> categorias = null;
+		
+		try {
+			categorias = categoriaService.findAll();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		mav.addObject("categorias",categorias);
+		mav.addObject("libro", libro);
+		mav.setViewName("indexlibro");
+		
+		return mav;
+		
+		
 	}
 	
 	

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlms:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<h1>Guardar Libro</h1>
+	<form th:action="@{/savelibro}" th:object="${libro}" method="post">
+	
+		<label for="nombre">Titulo: </label>
+        <input type="text" name="s_titulo" id="s_titulo" th:field="*{s_titulo}">
+        <br>
+        <span th:errors="*{s_titulo}" style="color: red;"></span>
+        <br>
+        <label for="apellido">Autor: </label>
+        <input type="text" name="apellido" id="nombre" th:field="*{s_autor}">
+        <br>
+        <span th:errors="*{s_autor}" style="color: red;"></span>
+        <br>
+        <label for="nit">ISBN: </label>
+        <input type="text" name="nit" id="nit" th:field="*{s_isbn}">
+        <br>
+		<span th:errors="*{s_isbn}" style="color: red;"></span>
+		<br>
+		<label for="categoria">Categoria: </label>
+        <select name="categoria" id="categoria" th:field="*{c_categoria}">
+            <option th:each="categoria, row: ${categorias}" th:value="${categoria.c_categoria}" th:text="${categoria.s_categoria}"></option>
+        </select>
+	
+	</form>
+
+
+</body>
+</html>
