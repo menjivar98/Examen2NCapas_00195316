@@ -13,6 +13,7 @@
 			
 			<label for = "s_nombre">Nombre Categoria:</label><br>
 			<input type="text" id="s_categoria" name="s_categoria" th:field="*{s_categoria}" >
+				 <span th:errors="*{s_categoria}" style="color: red;"></span>
 			<br>
 			<br>
 			<input type="submit" value="Guardar"  >

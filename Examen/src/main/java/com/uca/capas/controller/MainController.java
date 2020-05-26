@@ -1,8 +1,12 @@
 package com.uca.capas.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -41,20 +45,27 @@ public class MainController {
 	
 	
 	@RequestMapping(value="/saveCategoria")
-	public ModelAndView saveCategoria(Categoria categoria) {
+	public ModelAndView saveCategoria(@Valid @ModelAttribute Categoria categoria, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
-		
 		mav.addObject("categoria", categoria);
-		try {
+		
+		if(result.hasErrors()) {
+			mav.setViewName("indexCategoria");
+		}else{
+				
+			try {
+				
+				categoriaService.insert(categoria);
+				mav.setViewName("exitocategoria");
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			
-			categoriaService.insert(categoria);
-			mav.setViewName("exitocategoria");
-		}catch(Exception e){
-			e.printStackTrace();
+			
 		}
 		
-		return mav;
 		
+		return mav;
 	}
 	
 	
