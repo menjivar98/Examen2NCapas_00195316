@@ -28,7 +28,16 @@
         <select name="categoria" id="categoria" th:field="*{c_categoria}">
             <option th:each="categoria, row: ${categorias}" th:value="${categoria.c_categoria}" th:text="${categoria.s_categoria}"></option>
         </select>
-	
+        <br>
+        <br>
+        <label>Estado: </label>
+        <label>Activo</label>
+		<input th:field="*{b_estado}" type="radio" th:value="${true}">
+		<label>Inactivo</label>
+		<input th:field="*{b_estado}" type="radio" th:value="${false}"><br>
+        
+		<input type="submit" value="Guardar"> 
+		
 	</form>
 
 

@@ -93,5 +93,38 @@ public class MainController {
 		
 	}
 	
+	@RequestMapping("/savelibro")
+	public ModelAndView savelibro(@Valid @ModelAttribute Libro libro,BindingResult result) {
+		ModelAndView mav = new ModelAndView();
+		
+		if(result.hasErrors()) {
+			
+			List<Categoria> categorias = null;
+			
+			try {
+				
+				categorias = categoriaService.findAll();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			mav.addObject("categorias", categorias);
+			mav.setViewName("indexlibro");
+		}else {
+			try {
+				libroService.insert(libro);
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			libro = new Libro();
+			mav.setViewName("exitolibro");
+		}
+		
+		
+		return mav;
+	}
+	
 	
 }
