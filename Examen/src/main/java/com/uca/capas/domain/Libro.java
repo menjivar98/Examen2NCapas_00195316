@@ -50,7 +50,7 @@ public class Libro {
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "f_ingreso")
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "dd/mm/yyyy hh:mm")
 	private Date f_ingreso;
 	
 	@NotNull
@@ -63,7 +63,7 @@ public class Libro {
 	private String s_isbn;
 	
 	public String getF_ingreso() {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat formatter = new SimpleDateFormat("hh: mm: ss a dd-MMM-yyyy");
 		return formatter.format(f_ingreso);
 	}
 	
