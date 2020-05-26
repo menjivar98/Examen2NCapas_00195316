@@ -6,7 +6,16 @@
 </head>
 <body>
 	<h1>Exito se guardo la categoria correctamente</h1>
-	<a href="/index">Regresar a inicio</a>
-
+	<form th:action="@{/indexCategoria}"  >
+		<input type="submit" value="ingresar categoria">
+	</form>
+	<br>
+	<form th:action="@{/indexLibro}"  >
+		<input type="submit" value="Ingresar Libro">
+	</form>
+	<br>
+	<form th:action="@{/listalibros}"  >
+		<input type="submit" value="Ver libros">
+	</form>
 </body>
 </html>
